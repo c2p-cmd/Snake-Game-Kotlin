@@ -12,5 +12,6 @@ Press Q to quit the game.
 ## Screenshots
 ### Instructions
 ![Screenshot from 2021-12-01 22-35-00](https://user-images.githubusercontent.com/60012248/144280728-98837a08-e838-424a-b7d9-9049f20643f9.png)
+
 ### Game Play
-https://user-images.githubusercontent.com/60012248/144280663-913e2626-707d-40aa-a23a-2a5c3666594d.mp4
+https://user-images.githubusercontent.com/60012248/144281978-e2d363f7-155f-4fde-a281-be3ca6d529d7.mp4
