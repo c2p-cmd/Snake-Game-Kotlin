@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="rootVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.game.snakek.gui.GameController">
+   <HBox alignment="TOP_CENTER" prefHeight="80.0" prefWidth="300.0" spacing="100.0">
+      <padding>
+         <Insets top="15.0" />
+      </padding>
+      <Text fx:id="timeField" fill="honeydew" textAlignment="JUSTIFY">
+         <font>
+            <Font size="21.0"/>
+         </font>
+      </Text>
+      <Text fill="#1be368" strokeType="OUTSIDE" strokeWidth="0.0" text="Snake" textAlignment="CENTER">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="scoreField" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: 0" textAlignment="RIGHT">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+   </HBox>
+   <Pane prefHeight="505.0" prefWidth="500.0">
+      <Canvas fx:id="canvas" />
+   </Pane>
+</VBox>
