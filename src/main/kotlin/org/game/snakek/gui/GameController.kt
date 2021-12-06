@@ -27,6 +27,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 import java.util.*
+import kotlin.concurrent.thread
 import kotlin.system.exitProcess
 
 
@@ -55,8 +56,6 @@ class GameController : Initializable {
     val snake = createSnake()
 
     var isGameOver = false
-
-    private var isPause = startFlag
 
     var direction: Direction = Direction.LEFT
 
@@ -92,18 +91,19 @@ class GameController : Initializable {
                 restartGame()
             }
             if (key.code == KeyCode.P) {
-                isPause = pauseGame(isPause)
+                pauseGame(true)
             }
         }
 
         if (startFlag) {
             showInstructions()
-            isPause = false
             startFlag = false
         }
 
-        isPause = pauseGame(isPause)
-        currentTime.start()
+        pauseGame(false)
+        thread {
+            currentTime.start()
+        }
     }
 
     fun showTextOnCanvas(
@@ -117,19 +117,18 @@ class GameController : Initializable {
             )
         }
 
-    private fun pauseGame(isPause: Boolean): Boolean {
+    private fun pauseGame(isPause: Boolean) {
         if (isGameOver) {
             restartGame()
         }
         if (isPause) {
             showTextOnCanvas(
-                "paused...".uppercase(),
-                Color.LIGHTCYAN
+                msg = "paused...".uppercase(),
+                color = Color.LIGHTCYAN
             )
             ticker.stop()
         }
         if (!isPause) ticker.start()
-        return !isPause
     }
 
     private val currentTime = object : AnimationTimer() {
@@ -193,8 +192,10 @@ private fun showInstructions() {
 fun GameController.initClock(): Unit =
     Timeline(KeyFrame(Duration.ZERO, {
         // getting current time
-        timeField.text = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
-
+        timeField.text = LocalDateTime.now()
+            .format(
+                DateTimeFormatter.ofPattern("HH:mm:ss")
+            )
     }), KeyFrame(Duration.seconds(1.0))).let { clock ->
         clock.cycleCount = Animation.INDEFINITE
         clock.play()
